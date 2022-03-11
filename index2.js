@@ -3,7 +3,7 @@ const {createCanvas,loadImage}=require('Canvas');
 const canvas = createCanvas(1080,1920);
 const contex = canvas.getContext("2d");
 const {layers,width,height} = require("./config2.js")
-const edition = 50;
+const edition = 20;
 
 const saveLayer =  (_canvas,_edition) => {
    fs.writeFileSync(`./output2/${_edition}.png`,_canvas.toBuffer("image/png"))
