@@ -1,1 +1,302 @@
-[]
+[
+	{
+		"dna": 20681012966420,
+		"edition": 1,
+		"date": 1647106374066,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 32947047370612,
+		"edition": 2,
+		"date": 1647106374315,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 48850464566904,
+		"edition": 3,
+		"date": 1647106374549,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 47922426787569,
+		"edition": 4,
+		"date": 1647106374683,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 85621747835366,
+		"edition": 5,
+		"date": 1647106374900,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 53581012816509,
+		"edition": 6,
+		"date": 1647106375035,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 22588554731026,
+		"edition": 7,
+		"date": 1647106375265,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 85724268253162,
+		"edition": 8,
+		"date": 1647106375404,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 52922359513320,
+		"edition": 9,
+		"date": 1647106375635,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 24046335431372,
+		"edition": 10,
+		"date": 1647106375949,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 90513326232302,
+		"edition": 11,
+		"date": 1647106376205,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 52541020052510,
+		"edition": 12,
+		"date": 1647106376437,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 58096302946104,
+		"edition": 13,
+		"date": 1647106376671,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 60004701469054,
+		"edition": 14,
+		"date": 1647106376932,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 87383792498411,
+		"edition": 15,
+		"date": 1647106377081,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 35813438960888,
+		"edition": 16,
+		"date": 1647106377212,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 15561232744980,
+		"edition": 17,
+		"date": 1647106377347,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 57565723321817,
+		"edition": 18,
+		"date": 1647106377472,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 29437458538142,
+		"edition": 19,
+		"date": 1647106377597,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 10919924874944,
+		"edition": 20,
+		"date": 1647106377877,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 75449541510517,
+		"edition": 21,
+		"date": 1647106378022,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 60903415895269,
+		"edition": 22,
+		"date": 1647106378254,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 45331498504270,
+		"edition": 23,
+		"date": 1647106378422,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 48412202771926,
+		"edition": 24,
+		"date": 1647106378716,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 85071957441335,
+		"edition": 25,
+		"date": 1647106378839,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 90083003281851,
+		"edition": 26,
+		"date": 1647106379068,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 56274396305884,
+		"edition": 27,
+		"date": 1647106379331,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 59495651588757,
+		"edition": 28,
+		"date": 1647106379464,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 11349840777639,
+		"edition": 29,
+		"date": 1647106379598,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 90977123868351,
+		"edition": 30,
+		"date": 1647106379838,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 27306715474342,
+		"edition": 31,
+		"date": 1647106379987,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 55027946697615,
+		"edition": 32,
+		"date": 1647106380116,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 38285052339760,
+		"edition": 33,
+		"date": 1647106380356,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 93699172599884,
+		"edition": 34,
+		"date": 1647106380505,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 45359021134631,
+		"edition": 35,
+		"date": 1647106380634,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 72449276589280,
+		"edition": 36,
+		"date": 1647106380987,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 13759949892355,
+		"edition": 37,
+		"date": 1647106381118,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 79334802302225,
+		"edition": 38,
+		"date": 1647106381271,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 77490362760309,
+		"edition": 39,
+		"date": 1647106381437,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 98570038960787,
+		"edition": 40,
+		"date": 1647106381733,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 63996946758803,
+		"edition": 41,
+		"date": 1647106381897,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 20745205062875,
+		"edition": 42,
+		"date": 1647106382129,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 49212496052896,
+		"edition": 43,
+		"date": 1647106382292,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 38838947770701,
+		"edition": 44,
+		"date": 1647106382573,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 10835762167525,
+		"edition": 45,
+		"date": 1647106382821,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 20933065217039,
+		"edition": 46,
+		"date": 1647106383054,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 34142298266578,
+		"edition": 47,
+		"date": 1647106383281,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	},
+	{
+		"dna": 95529379328595,
+		"edition": 48,
+		"date": 1647106383405,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 71147518921367,
+		"edition": 49,
+		"date": 1647106383568,
+		"attributes": [{ "name": "White#50", "rarity": "original" }]
+	},
+	{
+		"dna": 86358032863951,
+		"edition": 50,
+		"date": 1647106383832,
+		"attributes": [{ "name": "Red#50", "rarity": "original" }]
+	}
+]

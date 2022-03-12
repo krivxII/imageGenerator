@@ -5,37 +5,60 @@ const myarg = process.argv.slice(2);
 const { createCanvas, loadImage } = require("Canvas");
 const { layers, width, height } = require("./config.js");
 const canvas = createCanvas(width, height);
-const contex = canvas.getContext("2d");
+const ctx = canvas.getContext("2d");
 const editionSize = myarg.length > 0 ? Number(myarg[0]) : 1;
 
 let metadataList = [];
 let atributesList = [];
 let dnaList = [];
 
+const signImage = (_sig) => { 
+	ctx.fillStyle = "#000000";
+	ctx. font = "bold 30pt Courier";
+	ctx.textBaseline = "top";
+	ctx.textAlign = "left";
+	ctx.fillText(_sig, 40, 40);
+}
+
+const genColor = () => {
+	let hue = Math.floor(Math.random() * 360);
+	let pastel = `hsl(${hue}, 100%, 85%)`; 
+	return pastel;
+  };
+
+const drawBackground = () => {
+	ctx.fillStyle = genColor();
+	ctx.fillRect(0, 0, width, height);
+  };
+						
+
+
 const saveImage = (_editionCount) => {
 	fs.writeFileSync(`./output/${_editionCount}.png`, canvas.toBuffer("image/png"));
 };
 
-const addMetadata = (_edition) => {
+const addMetadata = (_dna,_edition) => {
 	let dateTime = Date.now();
 	let tempMetadata = {
 		dna: _dna,
 		edition: _edition,
 		date: dateTime,
 		attributes: atributesList
-	  };
+	};
 	metadataList.push(tempMetadata);
-	dnaList.push(tempMetadata);
+
 	atributesList = [];
 };
 
 const addAttributes = (_element) => {
-	let element = _element.selectedElement
+	let selectedElement = _element.layer.selectedElement
 	atributesList.push({
-		name:selectedElement.name,
-		rarity:selectedElement.rarity
+		name: selectedElement.name,
+		rarity: selectedElement.rarity
 	})
 };
+
+
 const loadLayerImg = async (_layer) => {
 	return new Promise(async (resolve) => {
 		const image = await loadImage(
@@ -51,12 +74,12 @@ const loadLayerImg = async (_layer) => {
 };
 
 const drawElement = (_element) => {
-	contex.drawImage(
-		_element. loadedImage,
-		_element. layer.position.x,
+	ctx.drawImage(
+		_element.loadedImage,
+		_element.layer.position.x,
 		_element.layer.position.y,
 		_element.layer.size.width,
-		_element. layer.size.height
+		_element.layer.size.height
 	);
 	addAttributes(_element);
 };
@@ -93,8 +116,9 @@ const isDnaUnique = (_DnaList = [], _dna) => {
 	return _DnaList.find((x) => x === _dna) == undefined ? true : false;
 };
 
-const startCreating = () => {
+const startCreating = async () => {
 	let editionCount = 1;
+	writeMethaData("");
 	let newDna;
 	while (editionCount <= editionSize) {
 		console.log(dnaList);
@@ -102,19 +126,20 @@ const startCreating = () => {
 		if (isDnaUnique(dnaList, newDna)) {
 			console.log(`se creo el numero ${newDna}`);
 			let result = constructLayerToDna(newDna, layers);
-			console.log(result);
+			//console.log(result);
 			let loadedElements = [];
 			result.forEach((layer) => {
 				loadedElements.push(loadLayerImg(layer)); //promise
 			});
-			Promise.all(loadedElements).then((elementsArry) => {
-				elementsArry.forEach(element=>{
+			await Promise.all(loadedElements).then((elementsArry) => {
+				drawBackground();
+				elementsArry.forEach(element => {
 					drawElement(element)
-				})
+				});
+				signImage(`#${editionCount}`)
 				saveImage(editionCount)
-				addMetadata(newDna,editionCount);
-				console.log(`Created edition: ${editionCount} with DNA: ${
-					newDna}` );
+				addMetadata(newDna, editionCount);
+				console.log(`Created edition: ${editionCount} with DNA: ${newDna}`);
 
 			});
 			dnaList.push(newDna);
@@ -122,6 +147,7 @@ const startCreating = () => {
 		} else {
 			console.log("repeat dna");
 		}
+	    writeMethaData(JSON.stringify(metadataList));
 	}
 
 	/* layers.forEach((layer) => {
@@ -130,4 +156,4 @@ const startCreating = () => {
 };
 
 startCreating();
--writeMethaData();
+
