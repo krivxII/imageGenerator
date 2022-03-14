@@ -27,6 +27,7 @@ const cleanName = (_str) => {
 	return name;
 };
 
+//↓ devuelve los elementos de una carpeda en un arreglo
 const getElements = (path) => {
 	return fs
 		.readdirSync(path) //devuelve un arreglo con los elementos
@@ -42,6 +43,7 @@ const getElements = (path) => {
 		});
 };
 
+//Configuracion de las capas 
 const layers = [
 	{
 	    id:1,
