@@ -28,31 +28,31 @@ const cleanName = (_str) => {
 };
 
 //↓ devuelve los elementos de una carpeda en un arreglo
-const getElements = (path) => {
+const getElements = (_path) => {
 	return fs
-		.readdirSync(path) //devuelve un arreglo con los elementos
-		.filter((item) => !/(^|\/)\.[^\/\.]/g.test(item)) //filtra los archivos no deseados
+		.readdirSync(_path) //devuelve un arreglo con los elementos
+		.filter((fileName) => !/(^|\/)\.[^\/\.]/g.test(fileName)) //filtra los archivos no deseados
         //↓ devuelve un arreglo con los datos 
-		.map((i, index) => {
+		.map((fileName, index) => {
 			return {
 				id: index + 1,
-				name: cleanName(i),
-				fileName: i,
-				rarity: addRarity(i),
+				name: cleanName(fileName),
+				fileName: fileName,
+				rarity: addRarity(fileName),
 			};
 		});
 };
 
 //Configuracion de las capas 
 const layers = [
-	{
-	    id:1,
-	    name:"background",
-	    location:`${dir}/input/background`,
-	    elements:getElements(`${dir}/input/background`),
-	    position:{x:0,y:0},
-	    size:{width:width,height:height},
-	},
+	// {
+	//     id:1,
+	//     name:"background",
+	//     location:`${dir}/input/background`,
+	//     elements:getElements(`${dir}/input/background`),
+	//     position:{x:0,y:0},
+	//     size:{width:width,height:height},
+	// },
 	{
 		id: 2,
 		name: "Eyeball",
