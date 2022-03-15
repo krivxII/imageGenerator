@@ -1,12 +1,18 @@
 const fs = require("fs");
-//console.log(process.argv);
-const myarg = process.argv.slice(2); // obtiene los argumentos pasados
-//console.log(myarg);
 const { createCanvas, loadImage } = require("Canvas");
-const { layers, width, height } = require("./config.js");
+const {
+	layers,
+	width,
+	height,
+	description,
+	baseImageUri,
+	editionSize,
+	startEditionFrom,
+	endEditionAt,
+	rarityWeights,
+} = require("./config.js");
 const canvas = createCanvas(width, height);
 const ctx = canvas.getContext("2d");
-const editionSize = myarg.length > 0 ? Number(myarg[0]) : 1;
 
 let metadataList = []; //Se guarda la informacion de cada imagen
 let atributesList = []; // se guarda la informacion de cada capa de una imagen
@@ -43,6 +49,9 @@ const addMetadata = (_dna, _edition) => {
 	let dateTime = Date.now();
 	let tempMetadata = {
 		dna: _dna.join(""),
+		name:`#${_edition}`,
+		description: description,
+		image: `${baseImageUri}/${_edition}`,
 		edition: _edition,
 		date: dateTime,
 		attributes: atributesList,
@@ -63,9 +72,7 @@ const addAttributes = (_element) => {
 
 const loadLayerImg = async (_layer) => {
 	return new Promise(async (resolve) => {
-		const image = await loadImage(
-			`${_layer.location}/${_layer.selectedElement.fileName}`
-		); //se consigue la imagen
+		const image = await loadImage(`${_layer.selectedElement.path}`); //se consigue la imagen
 		resolve({ layer: _layer, loadedImage: image });
 	});
 };
@@ -81,12 +88,10 @@ const drawElement = (_element) => {
 	addAttributes(_element);
 };
 
-const constructLayerToDna = (_dna = [], _layer = []) => {
-//	let DnaSegment = _dna.toString().match(/.{1,2}/g);
-//	console.log("Este es es segmento ");
-//	console.log(DnaSegment);
-	let mappedDnaToLayers = _layer.map((layer,index) => {
-		let selectedElement = layer.elements[_dna[index]];
+const constructLayerToDna = (_dna = [], _layer = [],_rarity) => {
+
+	let mappedDnaToLayers = _layer.map((layer, index) => {
+		let selectedElement = layer.elements[_rarity][_dna[index]];
 		return {
 			location: layer.location,
 			elements: layer.ºelements,
@@ -98,41 +103,63 @@ const constructLayerToDna = (_dna = [], _layer = []) => {
 	return mappedDnaToLayers;
 };
 
-const createDna = (_layers) => {
+const createDna = (_layers,_rarity) => {
 	let randomNum = [];
 	_layers.forEach((layer) => {
-		let num  = Math.floor(Math.random() * layer.elements.length);
-		randomNum.push(num); 
+		let num = Math.floor(Math.random() * layer.elements[_rarity].length);
+		randomNum.push(num);
 	});
 	return randomNum;
 };
 
+
+const getRarity = (_editionCount) => {
+	let rarity = "";
+	rarityWeights.forEach((rarityWeight) => {
+		if (
+			_editionCount >= rarityWeight.from &&
+			_editionCount <= rarityWeight.to
+		) {
+			rarity = rarityWeight.value;
+		}
+	});
+	return rarity;
+};
 
 const writeMethaData = (_data) => {
 	fs.writeFileSync("./output/_metadata.json", _data);
 };
 
 const isDnaUnique = (_DnaList = [], _dna = []) => {
-	return _DnaList.find((x) => x.join("") === _dna.join("")) == undefined ? true : false;
+	return _DnaList.find((x) => x.join("") === _dna.join("")) == undefined
+		? true
+		: false;
 };
 
 const startCreating = async () => {
-	let editionCount = 1; //se inicia el contador
 	writeMethaData(""); //se vacia el archivo de metadata
+	let editionCount = startEditionFrom; //se inicia el contador
 	let newDna;
-	while (editionCount <= editionSize) {
+	while (editionCount <= endEditionAt) {
+		console.log(editionCount);
+
+		let rarity = getRarity(editionCount);
+		console.log(rarity);
+
+		newDna = createDna(layers,rarity);
 		console.log(dnaList);
-		newDna = createDna(layers);
+
+
 		if (isDnaUnique(dnaList, newDna)) {
-			console.log(`se creo el numero ${newDna}`);
-			let result = constructLayerToDna(newDna, layers);
-			//console.log(result);
+		
+			let result = constructLayerToDna(newDna,layers,rarity);
 			let loadedElements = [];
+
 			result.forEach((layer) => {
 				loadedElements.push(loadLayerImg(layer)); //promise
 			});
 			await Promise.all(loadedElements).then((elementsArry) => {
-				ctx.clearRect(0,0,width,height)
+				ctx.clearRect(0, 0, width, height);
 				drawBackground();
 				elementsArry.forEach((element) => {
 					drawElement(element);
