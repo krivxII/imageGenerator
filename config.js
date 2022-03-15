@@ -7,106 +7,237 @@ const baseImageUri = "https://hashlips/nft";
 const startEditionFrom = 1;
 const endEditionAt = 10;
 const editionSize = 10; 
-const rarityWeights = [
+
+const raceWeights = [
 	{
-	  value: "super_rare",
-	  from: 1,
-	  to: 1,
+		value:"human",
+		from: 1,
+		to: editionSize,
 	},
-	{
-	  value: "rare",
-	  from: 2,
-	  to: 5,
-	},
-	{
-	  value: "original",
-	  from: 5,
-	  to: editionSize,
-	},
-  ];
+]
 
 
-const cleanName = (_str) => {
-	let name = _str.slice(0, -4);
-	
-	return name;
-};
 
-//↓ devuelve los elementos de una carpeda en un arreglo
-const getElements = (_path) => {
-	return fs
-		.readdirSync(_path) //devuelve un arreglo con los elementos
-		.filter((fileName) => !/(^|\/)\.[^\/\.]/g.test(fileName)) //filtra los archivos no deseados
-        //↓ devuelve un arreglo con los datos 
-		.map((fileName) => {
-			return {
-				name: cleanName(fileName),
-				path: `${_path}/${fileName}`,
-			};
-		});
-};
 
-//Configuracion de las capas 
-const layers = [
-	{
-	  elements: {
-		original: getElements(`${dir}/input/ball/original`),
-		rare: getElements(`${dir}/input/ball/rare`),
-		super_rare: getElements(`${dir}/input/ball/super_rare`),
-	  },
-	  position: { x: 0, y: 0 },
-	  size: { width: width, height: height },
-	},
-	{
-	  elements: {
-		original: getElements(`${dir}/input/eye color/original`),
-		rare: getElements(`${dir}/input/eye color/rare`),
-		super_rare: getElements(`${dir}/input/eye color/super_rare`),
-	  },
-	  position: { x: 0, y: 0 },
-	  size: { width: width, height: height },
-	},
-	{
-	  elements: {
-		original: getElements(`${dir}/input/iris/original`),
-		rare: getElements(`${dir}/input/iris/rare`),
-		super_rare: getElements(`${dir}/input/iris/super_rare`),
-	  },
-	  position: { x: 0, y: 0 },
-	  size: { width: width, height: height },
-	},
-	{
-	  elements: {
-		original: getElements(`${dir}/input/shine/original`),
-		rare: getElements(`${dir}/input/shine/rare`),
-		super_rare: getElements(`${dir}/input/shine/super_rare`),
-	  },
-	  position: { x: 0, y: 0 },
-	  size: { width: width, height: height },
-	},
-	{
-	  elements: {
-		original: getElements(`${dir}/input/bottom lid/original`),
-		rare: getElements(`${dir}/input/bottom lid/rare`),
-		super_rare: getElements(`${dir}/input/bottom lid/super_rare`),
-	  },
-	  position: { x: 0, y: 0 },
-	  size: { width: width, height: height },
-	},
-	{
-	  elements: {
-		original: getElements(`${dir}/input/top lid/original`),
-		rare: getElements(`${dir}/input/top lid/rare`),
-		super_rare: getElements(`${dir}/input/top lid/super_rare`),
-	  },
-	  position: { x: 0, y: 0 },
-	  size: { width: width, height: height },
-	},
-  ];
+const races = {
+	human:{
+		name: "human",
+		layers:[
+			{
+				name: "background",
+				elements:[
+					{
+						id:0,
+						name:"LightBlue",
+						path:`${dir}/input/human/1-background/LightBlue.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"Orange",
+						path:`${dir}/input/human/1-background/Orange.png`,
+						weight:20
+					},
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "suit",
+				elements:[
+					{
+						id:0,
+						name:"BackPack",
+						path:`${dir}/input/human/2-suit/BackPack.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"Blue",
+						path:`${dir}/input/human/2-suit/Blue.png`,
+						weight:50
+					}
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "shoulder",
+				elements:[
+					{
+						id:0,
+						name:"AlienPatch",
+						path:`${dir}/input/human/3-shoulder/AlienPatch.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"Commet",
+						path:`${dir}/input/human/3-shoulder/Commet.png`,
+						weight:30
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "pin",
+				elements:[
+					{
+						id:0,
+						name:"AlienPin",
+						path:`${dir}/input/human/4-pin/AlienPin.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"CoinPin",
+						path:`${dir}/input/human/4-pin/CoinPin.png`,
+						weight:20
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "skin",
+				elements:[
+					{
+						id:0,
+						name:"Alien",
+						path:`${dir}/input/human/5-skin/Alien.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"Black",
+						path:`${dir}/input/human/5-skin/Black.png`,
+						weight:20
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "facial-hair",
+				elements:[
+					{
+						id:0,
+						name:"AlienPin",
+						path:`${dir}/input/human/6-facial-hair/Goatee.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"CoinPin",
+						path:`${dir}/input/human/6-facial-hair/Mustache.png`,
+						weight:20
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "mask",
+				elements:[
+					{
+						id:0,
+						name:"Mask",
+						path:`${dir}/input/human/7-mask/Mask.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"NoMask",
+						path:`${dir}/input/human/7-mask/NoMask.png`,
+						weight:20
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "hair",
+				elements:[
+					{
+						id:0,
+						name:"BlondeBun",
+						path:`${dir}/input/human/8-hair/BlondeBun.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"Brown",
+						path:`${dir}/input/human/8-hair/Brown.png`,
+						weight:20
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "accessoriespin",
+				elements:[
+					{
+						id:0,
+						name:"NightVision",
+						path:`${dir}/input/human/9-accessories/NightVision.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"Sunglasses",
+						path:`${dir}/input/human/9-accessories/Sunglasses.png`,
+						weight:20
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+				
+			},
+			{
+				name: "headwear",
+				elements:[
+					{
+						id:0,
+						name:"AlieGlassDomenPin",
+						path:`${dir}/input/human/10-headwear/GlassDome.png`,
+						weight:100
+					},
+					{
+						id:1,
+						name:"Headset",
+						path:`${dir}/input/human/10-headwear/Headset.png`,
+						weight:20
+					},
+					
+				],
+				position: { x: 0, y: 0 },
+				size: { width: width, height: height },
+			},
+
+		],
+
+	}
+}
 
 
 module.exports = { 
-	layers,
     width,
 	height,
 	description,
@@ -114,5 +245,6 @@ module.exports = {
 	editionSize,
 	startEditionFrom,
 	endEditionAt,
-	rarityWeights,
+	races,
+	raceWeights
   };
